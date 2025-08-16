@@ -4,7 +4,7 @@ import  createTokenAndSaveCookie from "../jwt/generateToken.js"
 
 
 export const signup = async(req, res) => {
-    const { fullname, email, password, confirmPassword } = req.body;
+    const { fullname, email, password, } = req.body;
     try {
         
 
