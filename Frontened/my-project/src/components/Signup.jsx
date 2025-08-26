@@ -2,8 +2,12 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import React from "react";
+import {useAuth} from "../context/Authprovider";
 
 function Signup() {
+  const [authUser, setAuthUser] = useAuth();
+  console.log("Current Auth User:", authUser);
+
   const {
     register,
     handleSubmit,
@@ -30,6 +34,7 @@ function Signup() {
           alert("Signup successful! Please login.");
         }
         localStorage.setItem("ChatApp", JSON.stringify(response.data));
+        setAuthUser(response.data); 
       })
       .catch((error) => {
         if (error.response) {
@@ -42,12 +47,12 @@ function Signup() {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center">
+    <div className="flex h-screen items-center justify-center bg-black">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="border border-white px-6 py-2 rounded-md space-y-3 w-96"
       >
-        <h1 className="text-2xl text-center">
+        <h1 className="text-2xl text-center text-white">
           Chat<span className="text-green-500 font-semibold"> App</span>
         </h1>
 

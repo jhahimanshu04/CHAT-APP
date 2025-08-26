@@ -4,7 +4,7 @@ import  createTokenAndSaveCookie from "../jwt/generateToken.js"
 
 
 export const signup = async(req, res) => {
-    const { fullname, email, password, } = req.body;
+    const { fullname, email, password, confirmPassword } = req.body;
     try {
         
 
@@ -36,6 +36,7 @@ export const signup = async(req, res) => {
         res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 }
+
 export const login = async (req, res) => {
     try {
         const {email, password } = req.body;
@@ -75,3 +76,14 @@ export const logout = async (req, res) => {
     
 
 } 
+export const AllUsers = async (req, res) => {
+    try {
+        const loggedInUser = req.user.id;
+        const filteredUsers= await User.find({_id:{$ne:loggedInUser}}).select("-password");
+        res.status(201).json({
+            filteredUsers
+        });
+    } catch (error) {
+        console.log("Error in allUsers Controller:"+ error)
+    }
+}
