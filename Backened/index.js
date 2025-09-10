@@ -15,7 +15,7 @@ app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT||3000;
 const URI = process.env.MONGODB_URI;
 try {
   await mongoose.connect(URI);

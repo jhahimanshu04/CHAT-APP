@@ -25,7 +25,7 @@ const Login = () => {
     };
 
     await axios
-      .post("http://localhost:4002/api/users/login", userInfo)
+      .post("/api/users/login", userInfo)
       .then((response) => {
         console.log("Response:", response.data);
         if (response.data) {

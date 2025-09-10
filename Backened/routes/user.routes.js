@@ -5,10 +5,10 @@ import {
   logout,
   AllUsers,
 } from "../controller/user.controller.js";
-import  secureRoute from "../middleware/secureRoute.js";
+import secureRoute from "../middleware/secureRoute.js";
 const router = express.Router();
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/logout", logout);
-router.get("/allusers", secureRoute, AllUsers);
+router.get("/AllUsers", secureRoute, AllUsers);
 export default router;

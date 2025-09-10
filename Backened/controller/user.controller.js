@@ -79,11 +79,13 @@ export const logout = async (req, res) => {
 export const AllUsers = async (req, res) => {
     try {
         const loggedInUser = req.user.id;
-        const filteredUsers= await User.find({_id:{$ne:loggedInUser}}).select("-password");
-        res.status(201).json({
+        const filteredUsers = await User.find({ _id: { $ne: loggedInUser } }).select("-password");
+         console.log("✅ Backend se bhejne wale users:", filteredUsers);
+
+        res.status(200).json({
             filteredUsers
         });
     } catch (error) {
-        console.log("Error in allUsers Controller:"+ error)
+        console.log("Error in allUsers Controller:" + error)
     }
-}
+};

@@ -27,7 +27,7 @@ function Signup() {
     };
 
     await axios
-      .post("http://localhost:4002/api/users/signup", userInfo)
+      .post("/api/users/signup", userInfo)
       .then((response) => {
         console.log("Response:", response.data);
         if (response.data) {
